@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login | DarkCloud
+{% endblock %}
+
+{% block body %}
+
+<style>
+	.Myform{
+		width:300px;
+		height: 320px;
+		background: #fff;
+		border-radius: 10px;
+		margin: 10% auto;
+		box-shadow: 2px 2px 4px 0px #000000;
+	}
+	.Myform h1 {
+		margin: 0;
+		background-color: #282830;
+		border-radius: 10px 10px 0 0;
+		color: #fff;
+		font-size: 14px;
+		padding: 20px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.inp{
+		padding: 11px;
+	}
+	.log{
+		border: 1px solid #dcdcdc;
+		padding: 12px 10px;
+		width: 260px;
+		border-radius: 5px 5px 0 0;
+	}
+	.pass{
+		border: 1px solid #dcdcdc;
+		padding: 12px 10px;
+		width: 260px;
+		border-radius: 0px 0px 5px 5px;
+	}
+	.btn{
+		background: #1dabb8;
+		border-radius: 5px;
+		color: #fff;
+		float: right;
+		font-weight: bold;
+		margin: 10px;
+		padding: 12px 20px;
+	}
+	.info{
+		width:130px;
+		float: left;
+		padding-top: 20px;
+	}
+	a{
+		color:#999;
+		text-decoration: none;
+	}
+	a:hover{
+		color: #1dabb8;
+
+	}
+</style>
+
+<div class="Myform">
+	<h1>Login or register</h1>
+	<div class="inp">
+		<form name="regisrration" action="/{{ checkLoginLink }}" method="post" style="text-items: center;">
+			<img src="{{ url_for('static', filename=captchaPath) }}">
+
+			<input class="log" type="text" required placeholder="Your login" name="login" maxlength="16">
+			<input class="pass" type="password" required placeholder="Password" name="password" style="padding-top: 10px;" maxlength="32">
+			<input class="pass" type="text" required placeholder="Text from photo" name="captcha" style="padding-top: 10px;" maxlength="10">
+			<div class="info" style="padding-left: 20px; font-size: 16px;">{{ script }}</div>
+			<input class="btn" type="submit" value="ENTER">
+		</form>
+	</div>
+</div>
+
+{% endblock %}
